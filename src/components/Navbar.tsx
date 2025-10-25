@@ -3,14 +3,15 @@ import { CiLight } from "react-icons/ci";
 
 
 export default function Navbar() {
+
   return (
-    <nav className="md:flex items-center justify-between space-y-5">
-          <h3 className="text-xl font-bold">Ticket-App</h3>
+    <nav className="md:flex items-center justify-between space-y-5 bg-[#131022]/80 px-5 py-2 fixed z-10 w-full border-b">
+          <h3 className="text-xl font-bold pt-1">Ticket-App</h3>
           <ul className="flex items-center justify-between gap-5 font-semibold">
-              <li className="bg-gray-500 rounded-lg px-5 py-1">
+              <li className="bg-gray-500 rounded-lg px-5 py-2">
                   <Link to='/login'>Login</Link>
               </li>
-              <li className="bg-[#5435EE] rounded-lg px-5 py-1">
+              <li className="bg-[#5435EE] rounded-lg px-5 py-2">
                   <Link to='/register'>Get Started</Link>
               </li>
               <li>
