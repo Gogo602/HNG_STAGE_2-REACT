@@ -5,8 +5,6 @@ import { MdOutlineMoreTime } from "react-icons/md";
 import { PiUsersThreeFill } from "react-icons/pi";
 
 
-
-
 export default function Features() {
   return (
       <section className="flex items-center justify-center bg-[#131022] px-5 py-2">
@@ -14,11 +12,11 @@ export default function Features() {
             <div className="text-center -mt-15 text-md md:mt-0">
                 <h2 className="text-xl font-bold py-5 text-blue-600">Core Features</h2>
                 <p>
-                    Our platform is designed to provide seamless and efficient tiketing experience <br className="hidden md:inline"/> Here are some of the key features that make our app stand out.
+                    Our platform is designed to provide seamless and efficient tiketing experience. <br className="hidden sm:inline-block"/> Here are some of the key features that make our app stand out.
                 </p>
             </div>
             
-            <div className="flex items-center justify-center gap-7 px-2 py-10 z-1 md:px-25">
+            <div className="grid grid-cols-1 gap-7 px-2 py-10 z-1 md:px-25 mb-20 sm:grid-cols-2 lg:grid-cols-3">
                 {features.map((item: TFeatures) => (
                     <React.Fragment
                         key={item.id}
@@ -34,7 +32,7 @@ export default function Features() {
                 ))}
             </div>
             
-            <div className="bg-blue-900 absolute w-30 h-40 rounded-full z-0 shadow-3xl blur-3xl bottom-0 right-6"/>
+            <div className="bg-blue-900 absolute w-30 h-40 rounded-full z-0 shadow-3xl blur-3xl -bottom-5 right-5"/>
         </div>
     </section>
   )
