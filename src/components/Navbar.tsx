@@ -4,7 +4,7 @@ import { CiLight } from "react-icons/ci";
 
 export default function Navbar() {
   return (
-    <nav className="md:flex items-center justify-between px-6 py-3 space-y-5">
+    <nav className="md:flex items-center justify-between space-y-5">
           <h3 className="text-xl font-bold">Ticket-App</h3>
           <ul className="flex items-center justify-between gap-5 font-semibold">
               <li className="bg-gray-500 rounded-lg px-5 py-1">
