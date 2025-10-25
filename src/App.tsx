@@ -2,6 +2,8 @@
 
 export default function App() {
   return (
-    <div>App</div>
+    <div className="text-center">
+        Welcome
+    </div>
   )
 };
