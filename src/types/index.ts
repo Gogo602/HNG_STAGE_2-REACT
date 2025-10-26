@@ -6,3 +6,12 @@ export interface TFeatures{
     title: string;
     desc: string;
 }
+
+export interface TInput{
+    label: string;
+    name: string;
+    id: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    required: boolean;
+}
