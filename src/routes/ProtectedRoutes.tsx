@@ -7,9 +7,9 @@ interface TProtectedRoutes{
 
 const ProtectedRoutes = ({ children }: TProtectedRoutes) => {
   // Check if a session exists 
-  const sessionData = localStorage.getItem('session');
+  const session = localStorage.getItem('session');
   
-  if (!sessionData) {
+  if (!session) {
     // Redirect to the login page if no session 
     return <Navigate to="/login" replace />;
   }
