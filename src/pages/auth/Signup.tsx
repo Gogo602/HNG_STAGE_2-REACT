@@ -1,8 +1,8 @@
 import { useState } from "react";
-import EmailInput from "../components/inputs/EmailInput";
-import PasswordInput from "../components/inputs/PasswordInput";
+import EmailInput from "../../components/inputs/EmailInput";
+import PasswordInput from "../../components/inputs/PasswordInput";
 import { Link, useNavigate } from "react-router-dom";
-import TextInput from "../components/inputs/TextInput";
+import TextInput from "../../components/inputs/TextInput";
 
 export default function Signup() {
   const [email, setEmail] = useState("")

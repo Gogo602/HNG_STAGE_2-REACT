@@ -4,10 +4,10 @@ import Footer from "../components/Footer";
 
 export default function RootLayout() {
   return (
-    <div className="text-white">
+    <main className="text-white">
         <Navbar />
             <Outlet />
         <Footer />
-    </div>
+    </main>
   )
 }
