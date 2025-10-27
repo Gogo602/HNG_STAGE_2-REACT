@@ -24,6 +24,7 @@ export default function CreateTicket({ onClose }: TCloseProp) {
             id: crypto.randomUUID(),
             title,
             description,
+            status: "Open",
             createdAt: Date.now(),
             lastUpdated: Date.now()
         }

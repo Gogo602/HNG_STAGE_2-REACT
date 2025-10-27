@@ -1,5 +1,25 @@
+import { useEffect, useState } from "react";
+import { FaHouse } from "react-icons/fa6";
+
+interface TTicket {
+    id: string
+    title: string
+    description: string
+    status: string
+    createdAt: Date
+    lastUpdated: Date
+}
 
 export default function RecentTicket() {
+const [tickets, setTickets] = useState([]);
+
+    useEffect(() => {
+      // Retrieve tickets 
+      const allTickets = localStorage.getItem("tickets");
+      const parsedTickets = allTickets ? JSON.parse(allTickets) : [];
+      setTickets(parsedTickets.slice(0, 6)); 
+    }, []);
+    
 
   const getStatusClass = (status: string) => {
     switch (status) {
@@ -14,9 +34,10 @@ export default function RecentTicket() {
     }
   };
 
+    const hasTickets = tickets && tickets.length > 0;
 
   return (
-    <section className="py-5 px-2 rounded-md sm:px-5">
+    <section className="py-5  rounded-md">
       <div className="space-y-7">
         <div className="flex">
           <h2 className="font-semibold">Recent Tickets</h2>
@@ -28,7 +49,7 @@ export default function RecentTicket() {
                 <th className="border border-gray-300 text-left px-4 py-2 hidden lg:table-cell">
                   Ticket
                 </th>
-                <th className="border border-gray-300 text-left px-4 py-2 hidden lg:table-cell">
+                <th className="border border-gray-300 text-left px-4 py-2  lg:table-cell">
                   Subject
                 </th>
                 <th className="border border-gray-300 text-left px-4 py-2 hidden lg:table-cell">
@@ -44,25 +65,42 @@ export default function RecentTicket() {
               </tr>
             </thead>
             <tbody>
-                <tr className="text-[14px]">
-                    <td className="px-4 border border-gray-200 py-2 hidden lg:table-cell font-semibold">
-                    #789Y988
-                    </td>
-                    <td className="px-4 border border-gray-200 py-2 hidden lg:table-cell ">
-                    Withdrawal Failed
-                    </td>
-                    <td className="px-4 py-2 flex items-center justify-between gap-2">
-                    <span className={` ${getStatusClass(status)}`}>
-                        Open
-                    </span>
-                    </td>
-                    <td className="px-4 border border-gray-200 py-2 text-center">
-                    30/06/2025
-                    </td>
-                    <td className="px-4 border border-gray-200 py-2 hidden md:table-cell text-center">
-                    Edit
-                    </td>                    
-                </tr>
+                {hasTickets ? (
+                    tickets.map((ticket: TTicket) => (
+                        <tr key={ticket.id} className="text-[14px]">
+                            <td className="px-4 border border-gray-200 py-2 hidden lg:table-cell font-semibold">
+                                #{ticket.id.slice(0,8)}...
+                            </td>
+                            <td className="px-4 border border-gray-200 py-2  lg:table-cell ">
+                                {ticket.title}
+                            </td>
+                            <td className="px-4 py-2 border border-gray-200  hidden gap-2">
+                            <span className={` ${getStatusClass(ticket.status)}`}>
+                                {ticket.status}
+                            </span>
+                            </td>
+                            <td className="px-4 border border-gray-200 py-2  text-center">
+                               date
+                            </td>
+                            <td className="px-4 border border-gray-200 py-2  text-center">
+                               date
+                            </td>
+                            <td className="px-4 border border-gray-200 py-2 hidden md:table-cell text-center">
+                                Edit
+                            </td>                    
+                        </tr>
+                    ))
+                ):(
+                    <tr>
+                        <td colSpan={5} className="py-10 text-center text-gray-500">
+                            <div className="flex flex-col items-center justify-center">
+                                <FaHouse size={40} className="text-blue-600 mb-2" />
+                                <p>No tickets found.</p>
+                            </div>
+                        </td>
+                    </tr>
+                )}
+                
             </tbody>
           </table>
         </div>
