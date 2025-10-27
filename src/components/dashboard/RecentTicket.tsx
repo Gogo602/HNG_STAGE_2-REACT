@@ -12,7 +12,7 @@ interface TTicket {
 }
 
 export default function RecentTicket() {
-const [tickets, setTickets] = useState([]);
+const [tickets, setTickets] = useState<TTicket[]>([]);
 
     useEffect(() => {
       // Retrieve tickets 
@@ -20,7 +20,15 @@ const [tickets, setTickets] = useState([]);
       const parsedTickets = allTickets ? JSON.parse(allTickets) : [];
       setTickets(parsedTickets.slice(0, 6)); 
     }, []);
+  
+  
     
+  const handleDelete = (id: string) => {
+    const updatedTickets = tickets.filter(ticket => ticket?.id !== id)
+      setTickets(updatedTickets)
+      // Update localStorage with the new array
+        localStorage.setItem('tickets', JSON.stringify(updatedTickets));
+    }
 
   const getStatusClass = (status: string) => {
     switch (status) {
@@ -87,7 +95,12 @@ const [tickets, setTickets] = useState([]);
                             <td className="px-4 border border-gray-200 py-2 hidden md:table-cell text-center">
                                 <div className="flex items-center justify-center gap-6">
                                   <FaPen />
-                                  <MdDelete />
+                                  <button
+                                    onClick={() => handleDelete(ticket.id)}
+                                    className="text-red-500 hover:underline"
+                                  >
+                                    <MdDelete />
+                                  </button>
                                 </div>
                             </td>                    
                         </tr>
