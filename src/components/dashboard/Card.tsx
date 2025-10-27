@@ -1,15 +1,24 @@
+import type { ReactNode } from "react";
 
-export default function Card() {
+interface TCard {
+    title: string;
+    icon: ReactNode;
+    total: number;
+    percentage: string;
+}
+
+
+export default function Card({ title, icon, total, percentage}: TCard) {
   return (
-    <div className='bg-gray-500 rounded-md'>
+    <div className='bg-gray-600 rounded-md'>
         <div className='p-6 space-y-5'>
             <div className='flex items-center justify-between'>
-                <h3 className='font-bold'>Total Tickets</h3>
-                <p>Icons</p>
+                <h3 className='font-bold'>{title}</h3>
+                <p>{icon}</p>
             </div>
             <div>
-                <p className='font-bold text-2xl'>120</p>
-                <p>+20.1% from last Month</p>
+                <p className='font-bold text-4xl'>{total}</p>
+                <p className="text-sm">{percentage}</p>
             </div>
         </div>
     </div>

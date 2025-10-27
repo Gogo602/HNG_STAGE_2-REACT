@@ -1,12 +1,15 @@
-import type { TInput } from "../../types";
+import type { TextareaHTMLAttributes } from "react";
 
 
-export default function TextInput({ label, name, value, onChange, required = false}: TInput) {
+interface TextAreaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'type'> {
+  label: string;
+}
+
+export default function TextAreaInput({ label, name, value, onChange, required = false}: TextAreaProps) {
   return (
     <div className='mb-4'>
         <label htmlFor={name} className='block font-semibold'>{label}</label>
-        <input 
-            type="text"
+        <textarea 
             id={name}
             value={value}
             onChange={onChange}

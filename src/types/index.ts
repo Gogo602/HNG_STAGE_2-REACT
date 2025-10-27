@@ -15,3 +15,10 @@ export interface TInput{
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     required: boolean;
 }
+
+export interface ModalProps {
+  title: string;
+  isOpen: boolean;
+  onClose: () => void;
+  children: ReactNode;
+}
