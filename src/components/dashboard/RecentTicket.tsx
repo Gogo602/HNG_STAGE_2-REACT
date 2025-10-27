@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { FaHouse } from "react-icons/fa6";
+import { FaHouse, FaPen } from "react-icons/fa6";
+import { MdDelete } from "react-icons/md";
 
 interface TTicket {
     id: string
@@ -26,7 +27,7 @@ const [tickets, setTickets] = useState([]);
       case "Resolved":
         return "text-green-700";
       case "Open":
-        return "text-yellow-700";
+        return "text-yellow-500";
       case "In Progress":
         return "text-blue-500";
       default:
@@ -74,19 +75,20 @@ const [tickets, setTickets] = useState([]);
                             <td className="px-4 border border-gray-200 py-2  lg:table-cell ">
                                 {ticket.title}
                             </td>
-                            <td className="px-4 py-2 border border-gray-200  hidden gap-2">
-                            <span className={` ${getStatusClass(ticket.status)}`}>
-                                {ticket.status}
+                            <td className="px-4 py-2 border border-gray-200  hidden lg:table-cell  gap-2">
+                            <span className={` ${getStatusClass(ticket.status || "Open")}`}>
+                                {ticket.status || "Open"}
                             </span>
                             </td>
+                            
                             <td className="px-4 border border-gray-200 py-2  text-center">
-                               date
-                            </td>
-                            <td className="px-4 border border-gray-200 py-2  text-center">
-                               date
+                               {new Date(ticket.lastUpdated).toLocaleDateString()}
                             </td>
                             <td className="px-4 border border-gray-200 py-2 hidden md:table-cell text-center">
-                                Edit
+                                <div className="flex items-center justify-center gap-6">
+                                  <FaPen />
+                                  <MdDelete />
+                                </div>
                             </td>                    
                         </tr>
                     ))
