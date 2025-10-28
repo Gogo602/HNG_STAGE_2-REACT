@@ -1,15 +1,9 @@
 import { useEffect, useState } from "react";
-import { FaHouse, FaPen } from "react-icons/fa6";
+import { FaHouse } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
+import type { TTicket } from "../../types";
 
-interface TTicket {
-    id: string
-    title: string
-    description: string
-    status: string
-    createdAt: Date
-    lastUpdated: Date
-}
+
 
 export default function RecentTicket() {
 const [tickets, setTickets] = useState<TTicket[]>([]);
@@ -32,12 +26,12 @@ const [tickets, setTickets] = useState<TTicket[]>([]);
 
   const getStatusClass = (status: string) => {
     switch (status) {
-      case "Resolved":
+      case "open":
         return "text-green-700";
-      case "Open":
-        return "text-yellow-500";
-      case "In Progress":
-        return "text-blue-500";
+      case "in_progress":
+        return "text-yellow-700";
+      case "closed":
+        return "text-gray-300";
       default:
         return "text-red-700";
     }
@@ -84,24 +78,21 @@ const [tickets, setTickets] = useState<TTicket[]>([]);
                                 {ticket.title}
                             </td>
                             <td className="px-4 py-2 border border-gray-200  hidden lg:table-cell  gap-2">
-                            <span className={` ${getStatusClass(ticket.status || "Open")}`}>
-                                {ticket.status || "Open"}
-                            </span>
+                              <span className={` ${getStatusClass(ticket.status || "Open")}`}>
+                                  {ticket.status || "Open"}
+                              </span>
                             </td>
                             
                             <td className="px-4 border border-gray-200 py-2  text-center">
                                {new Date(ticket.lastUpdated).toLocaleDateString()}
                             </td>
                             <td className="px-4 border border-gray-200 py-2 hidden md:table-cell text-center">
-                                <div className="flex items-center justify-center gap-6">
-                                  <FaPen />
-                                  <button
+                                <button
                                     onClick={() => handleDelete(ticket.id)}
-                                    className="text-red-500 hover:underline"
-                                  >
-                                    <MdDelete />
-                                  </button>
-                                </div>
+                                    className="text-red-500 hover:cursor-pointer flex items-center gap-1"
+                                    >
+                                    <MdDelete /> {" "} Delete
+                                </button>
                             </td>                    
                         </tr>
                     ))

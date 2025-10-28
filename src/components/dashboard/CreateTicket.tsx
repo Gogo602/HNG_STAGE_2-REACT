@@ -10,6 +10,7 @@ interface TCloseProp{
 export default function CreateTicket({ onClose }: TCloseProp) {
     const [ title, setTitle ] = useState("")
     const [description, setDescription] = useState("")
+    const [status, setStatus] = useState("")
     const [ error, setError ] = useState("")
 
     const handleCreate = (e: { preventDefault: () => void; }) => {
@@ -24,7 +25,7 @@ export default function CreateTicket({ onClose }: TCloseProp) {
             id: crypto.randomUUID(),
             title,
             description,
-            status: "Open",
+            status,
             createdAt: Date.now(),
             lastUpdated: Date.now()
         }
@@ -62,6 +63,21 @@ export default function CreateTicket({ onClose }: TCloseProp) {
                 onChange={(e) => setTitle(e.target.value)}
                 required={true}
             />
+            
+            <div className="my-5">
+                <label htmlFor="status">Select Status</label>
+                <select
+                    name="status"
+                    id="status"
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
+                    className="w-full border border-gray-500 rounded-md outline-0 px-3 py-1.5 focus:border-white"
+                >
+                    <option value="open">Open</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="resolved">Resolved</option>
+                </select>
+            </div>
               <TextAreaInput
                 label="Description"
                 name="description"      

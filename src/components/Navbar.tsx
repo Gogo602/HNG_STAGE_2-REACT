@@ -19,7 +19,7 @@ export default function Navbar() {
           {session ? (
             <ul className="flex items-center justify-between gap-5 font-semibold">
               <li className="bg-[#5435EE] rounded-lg px-5 py-2">
-                  <Link to='"#"'>Manage Tickets</Link>
+                  <Link to='ticket-management'>Manage Tickets</Link>
               </li>
               <li className="bg-[#5435EE] rounded-lg px-5 py-2">
                   <Link to='#'>Logout</Link>

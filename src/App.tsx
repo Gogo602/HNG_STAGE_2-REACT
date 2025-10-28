@@ -6,6 +6,7 @@ import UserLayout from "./layout/UserLayout";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Home from "./pages/home/Home";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
+import TicketManagement from "./pages/ticketManagement/TicketManagement";
 
 
 export default function App() {
@@ -16,15 +17,14 @@ export default function App() {
         <Route path="login"  element={<Login />}/>
         <Route path="register"  element={<Signup />}/>
       </Route>
-      
-       {/* Protected routes */}
-      <Route path="/user" element={
-        <ProtectedRoutes>
-          <UserLayout />
-        </ProtectedRoutes>
-      }>
-        <Route index element={<Dashboard />} />
+
+       {/* Protected routes  */}
+      <Route path="/user" element={<ProtectedRoutes><UserLayout /></ProtectedRoutes>}>
+          <Route index element={<Dashboard />} />
+          <Route path="ticket-management" element={<TicketManagement />} />
       </Route>
+      
+        <Route index element={<Dashboard />} />
     </Routes>
   )
 };

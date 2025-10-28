@@ -22,3 +22,12 @@ export interface ModalProps {
   onClose: () => void;
   children: ReactNode;
 }
+
+export interface TTicket {
+    id: string
+    title: string
+    description: string
+    status: string
+    createdAt: Date
+    lastUpdated: Date
+}
