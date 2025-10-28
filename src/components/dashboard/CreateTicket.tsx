@@ -75,7 +75,7 @@ export default function CreateTicket({ onClose }: TCloseProp) {
                 >
                     <option value="open">Open</option>
                     <option value="in_progress">In Progress</option>
-                    <option value="resolved">Resolved</option>
+                    <option value="closed">Closed</option>
                 </select>
             </div>
               <TextAreaInput
