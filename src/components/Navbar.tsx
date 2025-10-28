@@ -1,9 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 export default function Navbar() {
+
+  const navigate = useNavigate()
     // Check if a session exists 
   const session = localStorage.getItem('session');
+
+  const handleLogout = () => {
+    localStorage.removeItem("session")
+    toast.success("Logout successful")
+    navigate("/")
+  }
+
 
   return (
     <nav
@@ -20,8 +30,8 @@ export default function Navbar() {
               <li className="bg-[#5435EE] rounded-lg px-5 py-2">
                   <Link to='ticket-management'>Manage Tickets</Link>
               </li>
-              <li className="bg-[#5435EE] rounded-lg px-5 py-2">
-                  <Link to='#'>Logout</Link>
+              <li className="bg-[#5435EE] rounded-lg px-5 py-2 hover:cursor-pointer">
+                  <button onClick={handleLogout} className="hover:cursor-pointer">Logout</button>
               </li>
           </ul>
       ) : (
