@@ -31,12 +31,11 @@ export default function Signup() {
     // Save the updated users 
     localStorage.setItem('users', JSON.stringify(users));
 
-    // console.log("User data stored in localStorage:", data);
     navigate('/login');
   }
 
   return (
-    <section className="min-h-[90vh] flex items-center justify-center bg-[#131022] px-5 w-full">
+    <section className="min-h-[90vh] flex items-center justify-center bg-[#131022] px-5 w-full max-w-[1440]">
       <div className=" w-full md:w-1/4">
         <div className="text-center mb-5 mt-17 font-semibold">
             <h2 className="text-2xl">

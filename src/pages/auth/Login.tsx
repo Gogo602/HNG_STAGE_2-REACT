@@ -44,7 +44,7 @@ export default function Login() {
   };
 
   return (
-    <section className="min-h-[90vh] flex items-center justify-center bg-[#131022] px-5 w-full">
+    <section className="min-h-[90vh] flex items-center justify-center bg-[#131022] px-5 w-full max-w-[1440]">
       <div className=" w-full md:w-1/4">
         <div className="text-center my-7 font-semibold">
             <h2 className="text-2xl">
